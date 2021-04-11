@@ -12,6 +12,7 @@ WORKDIR /build
 # Copy and download dependency using go mod
 COPY go.mod .
 COPY go.sum .
+COPY .env .
 RUN go mod download
 
 # Copy the code into the container
@@ -24,7 +25,7 @@ RUN go build -o main .
 WORKDIR /dist
 
 # Copy binary from build to main folder
-RUN cp /build/main .
+RUN cp /build/main /build/.env .
 
 # Put the binary onto Heroku image
 FROM heroku/heroku:16
