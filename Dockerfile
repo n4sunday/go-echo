@@ -28,10 +28,7 @@ WORKDIR /dist
 # Copy binary from build to main folder
 RUN cp /build/main .
 
-# Build a small image
-FROM scratch
-
-COPY --from=builder /dist/main /
-
-# Command to run
-ENTRYPOINT ["/main"]
+# Put the binary onto Heroku image
+FROM heroku/heroku:16
+COPY --from=builder /build /app
+CMD ["app/main"]
