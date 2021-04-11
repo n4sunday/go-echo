@@ -1,4 +1,8 @@
 
+<p align="center">
+<img src="https://cdn.labstack.com/images/echo-logo.svg" height="60" />
+</p>
+
 #### Create a docker image
 ```dockerfile
 FROM golang:alpine
